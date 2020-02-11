@@ -1,0 +1,29 @@
+{
+  "name": "@gammastream/scully-regex",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@scullyio/scully": "latest"
+  },
+  "description": "A Scully postRender plugin for performing regex transformations on the generated html.",
+  "maintainers": [
+    "Michael Sacket <msacket@gammastream.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gammastream/scully-regex.git"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "ssr"
+  ],
+  "author": "Michael Sacket <msacket@gammastream.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gammastream/scully-regex/issues"
+  },
+  "homepage": "https://github.com/gammastream/scully-regex#readme",
+  "publishConfig": {
+    "registry":"https://registry.npmjs.org/"
+  }
+}
