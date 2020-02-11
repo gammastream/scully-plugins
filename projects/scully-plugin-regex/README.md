@@ -1,4 +1,4 @@
-# scully-regex
+# scully-plugin-regex
 
 This `postRenderer` plugin for [Scully](http://scully.io/) will apply the configured regex replacements to your Scully rendered HTML.
 
@@ -7,7 +7,7 @@ This `postRenderer` plugin for [Scully](http://scully.io/) will apply the config
 To install this library with `npm` run
 
 ```
-$ npm install @gammastream/scully-regex --save-dev
+$ npm install @gammastream/scully-plugin-regex --save-dev
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Add the plugin to the `defaultPostRenderers` to execute it on all rendered pages
 
 ```js
 const {RouteTypes} = require('@scullyio/scully');
-const {RegexHtml} = require('@gammastream/scully-regex');
+const {RegexHtml} = require('@gammastream/scully-plugin-regex');
 
 const defaultPostRenderers = [RegexHtml];
 

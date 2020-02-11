@@ -1,4 +1,4 @@
-const { RegexHtml } = require('./dist/scully-regex');
+const { RegexHtml } = require('./dist/scully-plugin-regex');
 
 const postRenderers = [ RegexHtml ];
 

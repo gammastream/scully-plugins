@@ -124,38 +124,38 @@
         }
       }
     },
-    "scully-regex": {
+    "scully-plugin-regex": {
       "projectType": "library",
-      "root": "projects/scully-regex",
-      "sourceRoot": "projects/scully-regex/src",
+      "root": "projects/scully-plugin-regex",
+      "sourceRoot": "projects/scully-plugin-regex/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/scully-regex/tsconfig.lib.json",
-            "project": "projects/scully-regex/ng-package.json"
+            "tsConfig": "projects/scully-plugin-regex/tsconfig.lib.json",
+            "project": "projects/scully-plugin-regex/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/scully-regex/tsconfig.lib.prod.json"
+              "tsConfig": "projects/scully-plugin-regex/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/scully-regex/src/test.ts",
-            "tsConfig": "projects/scully-regex/tsconfig.spec.json",
-            "karmaConfig": "projects/scully-regex/karma.conf.js"
+            "main": "projects/scully-plugin-regex/src/test.ts",
+            "tsConfig": "projects/scully-plugin-regex/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-regex/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/scully-regex/tsconfig.lib.json",
-              "projects/scully-regex/tsconfig.spec.json"
+              "projects/scully-plugin-regex/tsconfig.lib.json",
+              "projects/scully-plugin-regex/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

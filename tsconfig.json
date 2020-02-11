@@ -19,9 +19,9 @@
       "dom"
     ],
     "paths": {
-      "scully-regex": [
-        "dist/scully-regex/scully-regex",
-        "dist/scully-regex"
+      "scully-plugin-regex": [
+        "dist/scully-plugin-regex/scully-plugin-regex",
+        "dist/scully-plugin-regex"
       ]
     }
   },

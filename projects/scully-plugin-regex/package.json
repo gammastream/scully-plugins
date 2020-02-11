@@ -1,5 +1,5 @@
 {
-  "name": "@gammastream/scully-regex",
+  "name": "@gammastream/scully-plugin-regex",
   "version": "1.0.1",
   "peerDependencies": {
     "@scullyio/scully": "latest"
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/gammastream/scully-plugins/issues"
   },
-  "homepage": "https://github.com/gammastream/scully-plugins/blob/master/projects/scully-regex",
+  "homepage": "https://github.com/gammastream/scully-plugins/blob/master/projects/scully-plugin-regex",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }

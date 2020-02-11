@@ -2,7 +2,7 @@
 
 A collection of plugins written for [Scully](http://scully.io/)
 
-## [@gammastream/scully-regex](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-regex)
+## [@gammastream/scully-plugin-regex](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-regex)
 
 This `postRenderer` plugin will apply the configured regex replacements to your Scully rendered HTML.
 

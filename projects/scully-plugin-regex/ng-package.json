@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/scully-regex",
+  "dest": "../../dist/scully-plugin-regex",
   "lib": {
     "entryFile": "src/public_api.ts.ts"
   }
