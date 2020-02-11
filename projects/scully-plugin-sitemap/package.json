@@ -1,0 +1,11 @@
+{
+  "name": "scully-plugin-sitemap",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@scullyio/scully": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^7.10.9",
+    "xmlbuilder": "^13.0.2"
+  }
+}

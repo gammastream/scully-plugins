@@ -163,6 +163,46 @@
           }
         }
       }
+    },
+    "scully-plugin-sitemap": {
+      "projectType": "library",
+      "root": "projects/scully-plugin-sitemap",
+      "sourceRoot": "projects/scully-plugin-sitemap/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/scully-plugin-sitemap/tsconfig.lib.json",
+            "project": "projects/scully-plugin-sitemap/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/scully-plugin-sitemap/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scully-plugin-sitemap/src/test.ts",
+            "tsConfig": "projects/scully-plugin-sitemap/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-sitemap/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scully-plugin-sitemap/tsconfig.lib.json",
+              "projects/scully-plugin-sitemap/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "scully-plugins"
 }

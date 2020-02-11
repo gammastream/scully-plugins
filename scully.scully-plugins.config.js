@@ -1,6 +1,7 @@
 const { RegexHtml } = require('./dist/scully-plugin-regex');
+const { Sitemap } = require('./dist/scully-plugin-sitemap');
 
-const postRenderers = [ RegexHtml ];
+const postRenderers = [ Sitemap ];
 
 const regexOptions = {
   replacements: [{
@@ -17,6 +18,7 @@ exports.config = {
   projectName: "scully-plugins",
   defaultPostRenderers: postRenderers,
   regexOptions,
+  sitemapOptions: {},
   outDir: './dist/static',
   routes: {
   }
