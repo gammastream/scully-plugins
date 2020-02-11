@@ -39,7 +39,7 @@ export const regexPlugin = async (html: string, route: RegexHandledRoute) => {
   }
 
   let regexedHtml = html;
-  if ( options.replacements ){
+  if ( options.replacements ) {
     options.replacements.forEach((replacement) => {
       if ( typeof replacement.from === 'string' ) {
         regexedHtml = regexedHtml.replace(new RegExp(replacement.from, 'g'), replacement.to);
