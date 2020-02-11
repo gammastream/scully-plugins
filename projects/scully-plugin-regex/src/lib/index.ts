@@ -52,4 +52,5 @@ export const regexPlugin = async (html: string, route: RegexHandledRoute) => {
 };
 
 export const RegexHtml = 'regexHtml';
-registerPlugin('render', RegexHtml, regexPlugin);
+const validator = async conf => [];
+registerPlugin('render', RegexHtml, regexPlugin, validator);
