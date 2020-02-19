@@ -37,7 +37,6 @@ export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) =>
   let options = defaultSitemapOptions;
 
   routes.push(route.route);
-  // console.log( { routes } );
 
   if ( route.sitemapOptions ) {
     options = {

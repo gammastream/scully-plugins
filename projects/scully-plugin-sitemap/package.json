@@ -1,5 +1,5 @@
 {
-  "name": "scully-plugin-sitemap",
+  "name": "@gammastream/scully-plugin-sitemap",
   "version": "0.0.1",
   "peerDependencies": {
     "@scullyio/scully": "latest"
@@ -7,5 +7,28 @@
   "devDependencies": {
     "@types/node": "^7.10.9",
     "xmlbuilder": "^13.0.2"
+  },
+  "description": "A Scully postRender plugin for generating xml sitemaps.",
+  "maintainers": [
+    "Michael Sacket <msacket@gammastream.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gammastream/scully-plugins.git"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "ssr",
+    "sitemap"
+  ],
+  "author": "Michael Sacket <msacket@gammastream.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gammastream/scully-plugins/issues"
+  },
+  "homepage": "https://github.com/gammastream/scully-plugins/blob/master/projects/scully-plugin-sitemap",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
