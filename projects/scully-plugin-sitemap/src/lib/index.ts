@@ -5,6 +5,7 @@ declare var require: any;
 const fs = require('fs');
 const path = require('path');
 const builder = require('xmlbuilder');
+const url = require('url');
 
 
 // used to store state between page renderings
@@ -55,9 +56,9 @@ export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) =>
     const rootElement = builder.create('urlset', {
       xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9"'
     });
-    routes.forEach((url) => {
+    routes.forEach((loc) => {
       const urlElement = rootElement.ele('url');
-      urlElement.ele('loc', path.join(options.urlPrefix, url));
+      urlElement.ele('loc', url.resolve(options.urlPrefix, loc));
       urlElement.ele('changefreq', options.changeFreq);
       urlElement.ele('lastmod', today.toISOString());
       urlElement.ele('priority', '0.5');
