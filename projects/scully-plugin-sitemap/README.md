@@ -21,6 +21,9 @@ const {Sitemap} = require('@gammastream/scully-plugin-sitemap');
 const defaultPostRenderers = [Sitemap];
 
 const sitmapOptions = {
+  urlPrefix: 'https://gamma.stream',
+  sitemapFilename: 'sitemap.xml',
+  changeFreq: 'monthly'
 };
 
 
@@ -38,6 +41,12 @@ Build app and run scully like normal.
 npm run build
 npm run scully
 ```
+
+## Notes
+
+* Currently, the default priority (0.5) is assigned to all routes.  Planned for a future update is the ability to assign a priority based on the number of segments in a route.
+
+* Sitemap is regenerated with every route.  At some time in the future, we expect Scully to support a class of plugins that run after it is finished generating all the routes.
 
 ## Questions or Issues
 
