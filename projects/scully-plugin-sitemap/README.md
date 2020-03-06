@@ -20,7 +20,7 @@ const {Sitemap} = require('@gammastream/scully-plugin-sitemap');
 
 const defaultPostRenderers = [Sitemap];
 
-const sitmapOptions = {
+const sitemapOptions = {
   urlPrefix: 'https://gamma.stream',
   sitemapFilename: 'sitemap.xml',
   changeFreq: 'monthly'
@@ -29,7 +29,7 @@ const sitmapOptions = {
 
 exports.config = {
   projectRoot: './src/app',
-  sitmapOptions,
+  sitemapOptions,
   defaultPostRenderers,
   routes: {}
 };
