@@ -11,7 +11,8 @@
     "scully": "scully",
     "scully:serve": "scully serve",
     "build:sitemap": "ng build scully-plugin-sitemap --prod",
-    "build:regex": "ng build scully-plugin-regex --prod"
+    "build:regex": "ng build scully-plugin-regex --prod",
+    "build:http404": "ng build scully-plugin-http404 --prod"
   },
   "private": true,
   "dependencies": {

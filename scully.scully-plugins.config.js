@@ -1,7 +1,8 @@
 const { RegexHtml } = require('./dist/scully-plugin-regex');
 const { Sitemap } = require('./dist/scully-plugin-sitemap');
+const { Http404 } = require('./dist/scully-plugin-http404');
 
-const postRenderers = [ Sitemap ];
+const postRenderers = [ Sitemap, Http404 ];
 
 const regexOptions = {
   replacements: [{

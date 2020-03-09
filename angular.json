@@ -203,6 +203,46 @@
           }
         }
       }
+    },
+    "scully-plugin-http404": {
+      "projectType": "library",
+      "root": "projects/scully-plugin-http404",
+      "sourceRoot": "projects/scully-plugin-http404/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/scully-plugin-http404/tsconfig.lib.json",
+            "project": "projects/scully-plugin-http404/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/scully-plugin-http404/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scully-plugin-http404/src/test.ts",
+            "tsConfig": "projects/scully-plugin-http404/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-http404/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scully-plugin-http404/tsconfig.lib.json",
+              "projects/scully-plugin-http404/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "scully-plugins"
 }

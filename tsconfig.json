@@ -23,12 +23,20 @@
         "dist/scully-plugin-regex/scully-plugin-regex",
         "dist/scully-plugin-regex"
       ],
-      "@gammastream/scully-plugin-regex": ["dist/scully-plugin-regex"],
+      "@gammastream/scully-plugin-regex": [
+        "dist/scully-plugin-regex"
+      ],
       "scully-plugin-sitemap": [
         "dist/scully-plugin-sitemap/scully-plugin-sitemap",
         "dist/scully-plugin-sitemap"
       ],
-      "@gammastream/scully-plugin-sitemap": ["dist/scully-plugin-sitemap"]
+      "@gammastream/scully-plugin-sitemap": [
+        "dist/scully-plugin-sitemap"
+      ],
+      "scully-plugin-http404": [
+        "dist/scully-plugin-http404/scully-plugin-http404",
+        "dist/scully-plugin-http404"
+      ]
     }
   },
   "angularCompilerOptions": {

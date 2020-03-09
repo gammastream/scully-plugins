@@ -4,26 +4,35 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { Http404Component } from './http404/http404.component';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
     ScullyLibModule,
     RouterModule.forRoot([{
       path: 'a',
-      component: AppComponent
+      component: PageComponent
     }, {
       path: 'b',
-      component: AppComponent
+      component: PageComponent
     }, {
       path: 'c',
-      component: AppComponent
+      component: PageComponent
     }, {
       path: '',
-      component: AppComponent
+      component: PageComponent
+    }, {
+      path: '404',
+      component: Http404Component
+    }, {
+      path: '**',
+      component: Http404Component
     }])
   ],
   providers: [],
