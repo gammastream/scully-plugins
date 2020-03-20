@@ -16,13 +16,16 @@ const today  = new Date();
 class SitemapOptions {
   urlPrefix: string;
   sitemapFilename: string;
-  changeFreq: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
+  changeFreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
+  priority?: string | string[];
+  ignoredRoutes?: string[];
 }
 
 const defaultSitemapOptions: SitemapOptions = {
   urlPrefix: 'http://localhost',
   sitemapFilename: 'sitemap.xml',
-  changeFreq: 'monthly'
+  changeFreq: 'monthly',
+  priority: '0.5'
 };
 
 export interface SitemapHandledRoute extends HandledRoute {
@@ -33,6 +36,16 @@ export interface SitemapScullyConfig extends ScullyConfig {
     sitemapOptions: SitemapOptions;
 }
 
+export const priorityForLocation = (loc: string, options: SitemapOptions) => {
+  if (typeof options.priority === 'string' || options.priority instanceof String) {
+    return options.priority;
+  } else if ( Array.isArray(options.priority) ) {
+    const segments = loc.split('/');
+    return options.priority[segments.length - 1];
+  } else {
+    return '0.5';
+  }
+};
 
 export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) => {
   let options = defaultSitemapOptions;
@@ -57,11 +70,14 @@ export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) =>
       xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9"'
     });
     routes.forEach((loc) => {
+      if ( options.ignoredRoutes && options.ignoredRoutes.includes(loc) ) {
+        return;
+      }
       const urlElement = rootElement.ele('url');
       urlElement.ele('loc', url.resolve(options.urlPrefix, loc));
       urlElement.ele('changefreq', options.changeFreq);
       urlElement.ele('lastmod', today.toISOString());
-      urlElement.ele('priority', '0.5');
+      urlElement.ele('priority', priorityForLocation(loc, options));
     });
     const xml = rootElement.end({ pretty: true});
     fs.writeFile(sitemapFile, xml, () => {

@@ -19,7 +19,13 @@ exports.config = {
   projectName: "scully-plugins",
   defaultPostRenderers: postRenderers,
   regexOptions,
-  sitemapOptions: {},
+  sitemapOptions: {
+    urlPrefix: 'https://gamma.stream',
+    sitemapFilename: 'sitemap.xml',
+    changeFreq: 'monthly',
+    priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
+    ignoredRoutes: ['/404']
+  },
   outDir: './dist/static',
   routes: {
   }
