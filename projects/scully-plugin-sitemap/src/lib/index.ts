@@ -19,6 +19,10 @@ class SitemapOptions {
   changeFreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
   priority?: string | string[];
   ignoredRoutes?: string[];
+  /**
+   * If `true`, the plugin will not log status messages to the console.
+   */
+  suppressLog?: boolean;
 }
 
 const defaultSitemapOptions: SitemapOptions = {
@@ -81,7 +85,9 @@ export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) =>
     });
     const xml = rootElement.end({ pretty: true});
     fs.writeFile(sitemapFile, xml, () => {
-      console.log('saved sitemap');
+      if (!options.suppressLog) {
+        console.log(`Wrote ${routes.length} route${routes.length === 1 ? '' : 's'} to ${options.sitemapFilename}`);
+      }
     });
   } catch ($e) {
     console.log($e);
