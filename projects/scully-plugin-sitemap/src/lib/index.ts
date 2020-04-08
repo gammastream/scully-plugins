@@ -70,9 +70,7 @@ export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) =>
 
   const sitemapFile = path.join(scullyConfig.outDir, options.sitemapFilename);
   try {
-    const rootElement = builder.create('urlset', {
-      xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9"'
-    });
+    const rootElement = builder.create('urlset').att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
     routes.forEach((loc) => {
       if ( options.ignoredRoutes && options.ignoredRoutes.includes(loc) ) {
         return;
