@@ -1,32 +1,33 @@
-const { RegexHtml } = require('./dist/scully-plugin-regex');
-const { Sitemap } = require('./dist/scully-plugin-sitemap');
-const { Http404 } = require('./dist/scully-plugin-http404');
-
-const postRenderers = [ Sitemap, Http404 ];
-
-const regexOptions = {
-  replacements: [{
-    from: 'ScullyPlugins',
-    to: 'Michael'
-  }, {
-    from: new RegExp('([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)', 'gi'),
-    to: '<a href="mailto:$1">$1</a>'
-  }]
-};
-
-exports.config = {
-  projectRoot: "./src",
-  projectName: "scully-plugins",
-  defaultPostRenderers: postRenderers,
-  regexOptions,
-  sitemapOptions: {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var scully_1 = require("@scullyio/scully");
+var scully_plugin_sitemap_1 = require("./dist/scully-plugin-sitemap");
+var SitemapPlugin = scully_plugin_sitemap_1.getSitemapPlugin();
+scully_1.setPluginConfig(SitemapPlugin, {
     urlPrefix: 'https://gamma.stream',
     sitemapFilename: 'sitemap.xml',
     changeFreq: 'monthly',
     priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
-    ignoredRoutes: ['/404']
-  },
-  outDir: './dist/static',
-  routes: {
-  }
+    ignoredRoutes: ['/404'],
+    routes: {
+        '/products/:productId': {
+            changeFreq: 'daily',
+            priority: '0.9',
+            sitemapFilename: 'sitemap-products.xml'
+        },
+    }
+});
+exports.config = {
+    projectRoot: './src',
+    projectName: 'scully-plugins',
+    outDir: './dist/static',
+    routes: {
+        '/products/:productId': {
+            type: 'json',
+            productId: {
+                url: 'http://localhost:4200/assets/products.json',
+                property: 'id',
+            }
+        }
+    }
 };

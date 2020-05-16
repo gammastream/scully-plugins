@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { Http404Component } from './http404/http404.component';
 import { PageComponent } from './page/page.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageComponent
+    PageComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,9 @@ import { PageComponent } from './page/page.component';
     }, {
       path: 'c',
       component: PageComponent
+    }, {
+      path: 'products/:productId',
+      component: ProductsComponent
     }, {
       path: '',
       component: PageComponent
