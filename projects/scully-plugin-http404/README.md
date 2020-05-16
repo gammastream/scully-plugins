@@ -42,7 +42,7 @@ Add the plugin to the `defaultPostRenderers` to execute it on the /404 route:
 
 ```typescript
 import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
-import { getHttp404Plugin } from './dist/scully-plugin-http404';
+import { getHttp404Plugin } from '@gammastream/scully-plugin-http404';
 
 
 const Http404Plugin = getHttp404Plugin();

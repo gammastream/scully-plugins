@@ -18,7 +18,7 @@ Add the plugin to the `defaultPostRenderers` to execute it on all rendered pages
 
 ```typescript
 import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
-import { getRegexPlugin } from './dist/scully-plugin-regex';
+import { getRegexPlugin } from '@gammastream/scully-plugin-regex';
 
 const RegexPlugin = getRegexPlugin();
 setPluginConfig(RegexPlugin, {
