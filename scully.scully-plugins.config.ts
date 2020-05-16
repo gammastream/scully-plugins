@@ -1,5 +1,6 @@
 import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { getSitemapPlugin } from './dist/scully-plugin-sitemap';
+import { getRegexPlugin } from './dist/scully-plugin-regex';
 
 
 const SitemapPlugin = getSitemapPlugin();
@@ -18,10 +19,30 @@ setPluginConfig(SitemapPlugin, {
     }
 });
 
+const RegexPlugin = getRegexPlugin();
+setPluginConfig(RegexPlugin, {
+    replacements: [{
+        from: 'foo',
+        to: 'foobar'
+    }, {
+        from: new RegExp('([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)', 'gi'),
+        to: '<a href="mailto:$1">$1</a>'
+    }],
+    routes: {
+        '/products/:productId': {
+            replacements: [{
+                from: 'foo',
+                to: 'foofoo'
+            }]
+        },
+    }
+});
+
 export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: 'scully-plugins',
   outDir: './dist/static',
+  defaultPostRenderers: [RegexPlugin],
   routes: {
     '/products/:productId': {
         type: 'json',

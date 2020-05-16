@@ -1,8 +1,11 @@
 {
   "name": "@gammastream/scully-plugin-regex",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "peerDependencies": {
     "@scullyio/scully": "latest"
+  },
+  "devDependencies": {
+    "path-to-regexp": "^0.1.7"
   },
   "description": "A Scully postRender plugin for performing regex transformations on the generated html.",
   "maintainers": [

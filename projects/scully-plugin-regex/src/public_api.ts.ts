@@ -2,4 +2,4 @@
  * Public API Surface of scully-plugin-regex
  */
 
-export { RegexHtml } from './lib/index';
+export { getRegexPlugin } from './lib/index';

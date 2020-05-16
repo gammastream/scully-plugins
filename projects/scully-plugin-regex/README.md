@@ -2,9 +2,11 @@
 
 This `postRenderer` plugin for [Scully](http://scully.io/) will apply the configured regex replacements to your Scully rendered HTML.
 
+*Version 2.0.0 introduces breaking changes in the way the plugin is configured.  It allows for a bit of decoupling from the main ScullyConfig*
+
 ## Installation
 
-To install this library with `npm` run
+To install this library with `npm` run:
 
 ```
 $ npm install @gammastream/scully-plugin-regex --save-dev
@@ -14,31 +16,43 @@ $ npm install @gammastream/scully-plugin-regex --save-dev
 
 Add the plugin to the `defaultPostRenderers` to execute it on all rendered pages:
 
-```js
-const {RouteTypes} = require('@scullyio/scully');
-const {RegexHtml} = require('@gammastream/scully-plugin-regex');
+```typescript
+import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { getRegexPlugin } from './dist/scully-plugin-regex';
 
-const defaultPostRenderers = [RegexHtml];
-
-const regexOptions = {
+const RegexPlugin = getRegexPlugin();
+setPluginConfig(RegexPlugin, {
     replacements: [{
-        from: 'http://www.googletagmanager.com',
-        to: 'https://www.googletagmanager.com'
-    }, {
         from: 'foo',
-        to: 'bar'
+        to: 'foobar'
     }, {
         from: new RegExp('([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)', 'gi'),
         to: '<a href="mailto:$1">$1</a>'
-    }]
-};
+    }],
+    routes: {
+        '/products/:productId': {
+            replacements: [{
+                from: 'foo',
+                to: 'foofoo'
+            }]
+        },
+    }
+});
 
-
-exports.config = {
-  projectRoot: './src/app',
-  regexOptions,
-  defaultPostRenderers,
-  routes: {}
+export const config: ScullyConfig = {
+  projectRoot: './src',
+  projectName: 'scully-plugins',
+  outDir: './dist/static',
+  defaultPostRenderers: [RegexPlugin],
+  routes: {
+    '/products/:productId': {
+        type: 'json',
+        productId: {
+            url: 'http://localhost:4200/assets/products.json',
+            property: 'id',
+        }
+    }
+  }
 };
 ```
 
