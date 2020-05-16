@@ -1,99 +1,116 @@
-import { registerPlugin, HandledRoute, ScullyConfig } from '@scullyio/scully';
-import { scullyConfig } from '@scullyio/scully/utils/config';
+import { registerPlugin, HandledRoute, ScullyConfig, getPluginConfig } from '@scullyio/scully';
+import { scullyConfig } from '@scullyio/scully/lib/utils/config';
+import { SitemapConfig, defaultSitemapConfig } from './sitemap-config';
 
 declare var require: any;
 const fs = require('fs');
 const path = require('path');
 const builder = require('xmlbuilder');
 const url = require('url');
+const pathToRegexp = require('path-to-regexp');
 
-
-// used to store state between page renderings
-const routes: string[] = [];
 const today  = new Date();
 
-
-class SitemapOptions {
-  urlPrefix: string;
-  sitemapFilename: string;
-  changeFreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
-  priority?: string | string[];
-  ignoredRoutes?: string[];
-  /**
-   * If `true`, the plugin will not log status messages to the console.
-   */
-  suppressLog?: boolean;
-}
-
-const defaultSitemapOptions: SitemapOptions = {
-  urlPrefix: 'http://localhost',
-  sitemapFilename: 'sitemap.xml',
-  changeFreq: 'monthly',
-  priority: '0.5'
-};
-
-export interface SitemapHandledRoute extends HandledRoute {
-  sitemapOptions: SitemapOptions;
-}
-
-export interface SitemapScullyConfig extends ScullyConfig {
-    sitemapOptions: SitemapOptions;
-}
-
-export const priorityForLocation = (loc: string, options: SitemapOptions) => {
-  if (typeof options.priority === 'string' || options.priority instanceof String) {
-    return options.priority;
-  } else if ( Array.isArray(options.priority) ) {
+const priorityForLocation = (loc: string, config: SitemapConfig) => {
+  if (typeof config.priority === 'string' || config.priority instanceof String) {
+    return config.priority;
+  } else if ( Array.isArray(config.priority) ) {
     const segments = loc.split('/');
-    return options.priority[segments.length - 1];
+    return config.priority[segments.length - 1];
   } else {
     return '0.5';
   }
 };
 
-export const sitemapPlugin = async (html: string, route: SitemapHandledRoute) => {
-  let options = defaultSitemapOptions;
-
-  routes.push(route.route);
-
-  if ( route.sitemapOptions ) {
-    options = {
-      ...defaultSitemapOptions,
-      ...route.sitemapOptions,
-    };
-  } else if ((scullyConfig as SitemapScullyConfig).sitemapOptions) {
-    options = {
-      ...defaultSitemapOptions,
-      ...(scullyConfig as SitemapScullyConfig).sitemapOptions,
-    };
-  }
-
-  const sitemapFile = path.join(scullyConfig.outDir, options.sitemapFilename);
-  try {
-    const rootElement = builder.create('urlset').att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-    routes.forEach((loc) => {
-      if ( options.ignoredRoutes && options.ignoredRoutes.includes(loc) ) {
-        return;
-      }
-      const urlElement = rootElement.ele('url');
-      urlElement.ele('loc', url.resolve(options.urlPrefix, loc));
-      urlElement.ele('changefreq', options.changeFreq);
-      urlElement.ele('lastmod', today.toISOString());
-      urlElement.ele('priority', priorityForLocation(loc, options));
-    });
-    const xml = rootElement.end({ pretty: true});
-    fs.writeFile(sitemapFile, xml, () => {
-      if (!options.suppressLog) {
-        console.log(`Wrote ${routes.length} route${routes.length === 1 ? '' : 's'} to ${options.sitemapFilename}`);
-      }
-    });
-  } catch ($e) {
-    console.log($e);
-  }
-
-  return Promise.resolve(html);
+const pluralizer = (num: number, singular: string, plural: string) => {
+  return num === 1 ? singular : plural;
 };
 
-export const Sitemap = 'sitemap';
+const configForRoute = (config: SitemapConfig, route: HandledRoute) => {
+  if ( config.routes ) {
+    // tslint:disable-next-line: forin
+    for (const routePath in config.routes) {
+      const routeConfig = config.routes[routePath];
+      if ( route.route.match(routeConfig.regexp) ) {
+        return {
+          route: route.route,
+          urlPrefix: routeConfig.urlPrefix || config.urlPrefix,
+          sitemapFilename: routeConfig.sitemapFilename || config.sitemapFilename,
+          changeFreq: routeConfig.changeFreq || config.changeFreq,
+          priority: routeConfig.priority || config.priority
+        };
+      }
+    }
+  }
+  return {
+    route: route.route,
+    urlPrefix: config.urlPrefix,
+    sitemapFilename: config.sitemapFilename,
+    changeFreq: config.changeFreq,
+    priority: config.priority
+  };
+};
+
+const getMapForRoute = (maps: any, routeConfig: any) => {
+  let map = maps[routeConfig.sitemapFilename];
+  if ( !map ) {
+    map = builder.create('urlset').att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+    maps[routeConfig.sitemapFilename] = map;
+  }
+  return map;
+};
+
+export const sitemapPlugin = async (routes: HandledRoute[]) => {
+  const config = Object.assign({}, defaultSitemapConfig, getPluginConfig(SitemapPlugin));
+
+  const log = (message?: any, ...optionalParams: any[]): void => {
+    if (!config.suppressLog) {
+      console.log( message, ...optionalParams);
+    }
+  };
+
+  log(`Started @gammastream/scully-plugin-sitemap`);
+  log(`Generating sitemaps for ${ routes.length } ${ pluralizer(routes.length, 'route', 'routes') }.`);
+
+  // parse route configurations
+  if ( config.routes ) {
+    Object.keys(config.routes).forEach(key => {
+      config.routes[key].regexp = pathToRegexp(key);
+    });
+  }
+
+  const maps = {};
+
+  routes.forEach((route: HandledRoute) => {
+    if ( config.ignoredRoutes && config.ignoredRoutes.includes(route.route) ) {
+      return;
+    }
+    const routeConfig = configForRoute(config, route);
+    const map = getMapForRoute(maps, routeConfig);
+    const urlElement = map.ele('url');
+    urlElement.ele('loc', url.resolve(routeConfig.urlPrefix, route.route));
+    urlElement.ele('changefreq', routeConfig.changeFreq);
+    urlElement.ele('lastmod', today.toISOString());
+    urlElement.ele('priority', priorityForLocation(route.route, routeConfig));
+  });
+
+  // tslint:disable-next-line: forin
+  for (const filename in maps) {
+    const sitemapFile = path.join(scullyConfig.outDir, filename);
+    const rootElement = maps[filename];
+    const xml = rootElement.end({ pretty: true});
+    fs.writeFileSync(sitemapFile, xml);
+    const routeCount = rootElement.children.length;
+    log(`Wrote ${ routeCount } ${ pluralizer(routeCount, 'route', 'routes') } to ${ filename }`);
+  }
+
+  log(`Finished @gammastream/scully-plugin-sitemap`);
+
+  return Promise.resolve('done');
+};
+
+const SitemapPlugin = 'sitemap';
 const validator = async conf => [];
-registerPlugin('render', Sitemap, sitemapPlugin, validator);
+registerPlugin('routeDiscoveryDone', SitemapPlugin, sitemapPlugin, validator);
+
+export const getSitemapPlugin = () => SitemapPlugin;

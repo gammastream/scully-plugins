@@ -2,4 +2,4 @@
  * Public API Surface of scully-plugin-sitemap
  */
 
-export { Sitemap } from './lib/index';
+export { getSitemapPlugin } from './lib/index';

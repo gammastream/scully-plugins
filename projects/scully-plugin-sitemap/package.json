@@ -5,8 +5,9 @@
     "@scullyio/scully": "latest"
   },
   "devDependencies": {
-    "@types/node": "^7.10.9",
-    "xmlbuilder": "^13.0.2"
+    "@types/node": "^7.10.10",
+    "xmlbuilder": "^13.0.2",
+    "path-to-regexp": "^0.1.7"
   },
   "description": "A Scully postRender plugin for generating xml sitemaps.",
   "maintainers": [
