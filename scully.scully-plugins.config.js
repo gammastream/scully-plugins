@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var scully_1 = require("@scullyio/scully");
 var scully_plugin_sitemap_1 = require("./dist/scully-plugin-sitemap");
 var scully_plugin_regex_1 = require("./dist/scully-plugin-regex");
+var scully_plugin_http404_1 = require("./dist/scully-plugin-http404");
 var SitemapPlugin = scully_plugin_sitemap_1.getSitemapPlugin();
 scully_1.setPluginConfig(SitemapPlugin, {
     urlPrefix: 'https://gamma.stream',
@@ -31,16 +32,17 @@ scully_1.setPluginConfig(RegexPlugin, {
         '/products/:productId': {
             replacements: [{
                     from: 'foo',
-                    to: 'foofo'
+                    to: 'foofoo'
                 }]
         },
     }
 });
+var Http404Plugin = scully_plugin_http404_1.getHttp404Plugin();
 exports.config = {
     projectRoot: './src',
     projectName: 'scully-plugins',
     outDir: './dist/static',
-    defaultPostRenderers: [RegexPlugin],
+    defaultPostRenderers: [RegexPlugin, Http404Plugin],
     routes: {
         '/products/:productId': {
             type: 'json',

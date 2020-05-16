@@ -2,6 +2,8 @@
 
 This `postRenderer` plugin for [Scully](http://scully.io/) will create a `/404.html` page for the configured `/404` route.  This is handy for generating custom 404 error pages within your Angular application while maintaining compatibility with the [firebase hosting requirements](https://firebase.google.com/docs/hosting/full-config#404) for 404s.
 
+*Version 1.0.0 introduces breaking changes in the way the plugin is registered and configured. Please update your configurations*
+
 ## Installation
 
 To install this library with `npm` run
@@ -38,17 +40,29 @@ RouterModule.forRoot([{
 
 Add the plugin to the `defaultPostRenderers` to execute it on the /404 route:
 
-```js
-const {RouteTypes} = require('@scullyio/scully');
-const {Http404} = require('@gammastream/scully-plugin-http404');
+```typescript
+import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { getHttp404Plugin } from './dist/scully-plugin-http404';
 
-const defaultPostRenderers = [Http404];
 
-exports.config = {
-  projectRoot: './src/app',
-  defaultPostRenderers,
-  routes: {}
+const Http404Plugin = getHttp404Plugin();
+
+export const config: ScullyConfig = {
+  projectRoot: './src',
+  projectName: 'scully-plugins',
+  outDir: './dist/static',
+  defaultPostRenderers: [Http404Plugin],
+  routes: {
+    '/products/:productId': {
+        type: 'json',
+        productId: {
+            url: 'http://localhost:4200/assets/products.json',
+            property: 'id',
+        }
+    }
+  }
 };
+
 ```
 
 Build app and run scully like normal.

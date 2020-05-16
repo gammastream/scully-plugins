@@ -1,6 +1,7 @@
 import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { getSitemapPlugin } from './dist/scully-plugin-sitemap';
 import { getRegexPlugin } from './dist/scully-plugin-regex';
+import { getHttp404Plugin } from './dist/scully-plugin-http404';
 
 
 const SitemapPlugin = getSitemapPlugin();
@@ -38,11 +39,13 @@ setPluginConfig(RegexPlugin, {
     }
 });
 
+const Http404Plugin = getHttp404Plugin();
+
 export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: 'scully-plugins',
   outDir: './dist/static',
-  defaultPostRenderers: [RegexPlugin],
+  defaultPostRenderers: [RegexPlugin, Http404Plugin],
   routes: {
     '/products/:productId': {
         type: 'json',
