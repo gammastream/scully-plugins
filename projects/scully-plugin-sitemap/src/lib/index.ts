@@ -1,5 +1,5 @@
 import { registerPlugin, HandledRoute, ScullyConfig, getPluginConfig } from '@scullyio/scully';
-import { scullyConfig } from '@scullyio/scully/lib/utils/config';
+import { scullyConfig } from '@scullyio/scully';
 import { SitemapConfig, defaultSitemapConfig } from './sitemap-config';
 
 declare var require: any;
