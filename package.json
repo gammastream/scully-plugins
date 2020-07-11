@@ -24,7 +24,7 @@
     "@angular/platform-browser": "^9.1.7",
     "@angular/platform-browser-dynamic": "^9.1.7",
     "@angular/router": "^9.1.7",
-    "@scullyio/init": "0.0.28",
+    "@scullyio/init": "0.0.29",
     "@scullyio/ng-lib": "latest",
     "@scullyio/scully": "latest",
     "rxjs": "^6.5.5",
