@@ -1,0 +1,33 @@
+{
+  "name": "@gammastream/scully-plugin-shopify",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@scullyio/scully": "0.0.99"
+  },
+  "devDependencies": {
+    "node-fetch": "^2.6.0",
+    "shopify-buy": "^2.11.0"
+  },
+  "description": "A Scully router plugin for fetching products and collections from Shopify.",
+  "maintainers": [
+    "Michael Sacket <msacket@gammastream.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gammastream/scully-plugins.git"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "ssr"
+  ],
+  "author": "Michael Sacket <msacket@gammastream.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gammastream/scully-plugins/issues"
+  },
+  "homepage": "https://github.com/gammastream/scully-plugins/blob/master/projects/scully-plugin-shopify",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

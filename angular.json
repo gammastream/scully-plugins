@@ -164,6 +164,46 @@
         }
       }
     },
+    "scully-plugin-shopify": {
+      "projectType": "library",
+      "root": "projects/scully-plugin-shopify",
+      "sourceRoot": "projects/scully-plugin-shopify/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/scully-plugin-shopify/tsconfig.lib.json",
+            "project": "projects/scully-plugin-shopify/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/scully-plugin-shopify/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scully-plugin-shopify/src/test.ts",
+            "tsConfig": "projects/scully-plugin-shopify/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-shopify/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scully-plugin-shopify/tsconfig.lib.json",
+              "projects/scully-plugin-shopify/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "scully-plugin-sitemap": {
       "projectType": "library",
       "root": "projects/scully-plugin-sitemap",

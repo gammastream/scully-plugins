@@ -12,7 +12,8 @@
     "scully:serve": "scully serve",
     "build:sitemap": "ng build scully-plugin-sitemap --prod",
     "build:regex": "ng build scully-plugin-regex --prod",
-    "build:http404": "ng build scully-plugin-http404 --prod"
+    "build:http404": "ng build scully-plugin-http404 --prod",
+    "build:shopify": "ng build scully-plugin-shopify --prod"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,8 @@
     "@scullyio/ng-lib": "0.0.27",
     "@scullyio/scully": "0.0.99",
     "rxjs": "^6.5.5",
+    "shopify-buy": "^2.11.0",
+    "fast-xml-parser": "^3.17.4",
     "tslib": "^1.13.0",
     "zone.js": "^0.10.3"
   },
@@ -37,10 +40,13 @@
     "@angular/cli": "^9.1.6",
     "@angular/compiler-cli": "^9.1.7",
     "@angular/language-service": "^9.1.7",
+    "@types/dotenv": "^8.2.0",
     "@types/jasmine": "^3.5.10",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.12.39",
     "codelyzer": "^5.2.2",
+    "dotenv": "^8.2.0",
+    "fast-xml-parser": "^3.17.4",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.3.0",
@@ -49,6 +55,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "ng-packagr": "^9.1.3",
+    "node-fetch": "^2.6.0",
     "protractor": "^5.4.4",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",

@@ -7,12 +7,16 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { Http404Component } from './http404/http404.component';
 import { PageComponent } from './page/page.component';
 import { ProductsComponent } from './products/products.component';
+import { ShopifyCollectionComponent } from './shopify-collection/shopify-collection.component';
+import { ShopifyProductComponent } from './shopify-product/shopify-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
-    ProductsComponent
+    ProductsComponent,
+    ShopifyCollectionComponent,
+    ShopifyProductComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,15 @@ import { ProductsComponent } from './products/products.component';
     }, {
       path: 'c',
       component: PageComponent
+    }, {
+      path: 'shopify-collections/:collectionHandle/:id',
+      component: ShopifyCollectionComponent
+    }, {
+      path: 'shopify-collections/:collectionHandle',
+      component: ShopifyCollectionComponent
+    }, {
+      path: 'shopify-product/:productHandle',
+      component: ShopifyProductComponent
     }, {
       path: 'products/:productId',
       component: ProductsComponent
