@@ -6,7 +6,11 @@ A collection of plugins written for [Scully](http://scully.io/)
 
 This `postRenderer` plugin will apply the configured regex replacements to your Scully rendered HTML.
 
-## [@gammastream/scully-plugin-sitemap](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-sitemap)
+## [@gammastream/scully-plugin-shopify](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-shopify)
+
+This plugin generates route id/handles for Shopify products and collections.
+
+## [@gammastream/scully-plugin-http404](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-http404)
 
 This plugin generates a [sitemap.xml](https://www.sitemaps.org/protocol.html) file suitable for submitting to Google's search console.
 
