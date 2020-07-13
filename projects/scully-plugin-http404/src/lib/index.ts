@@ -1,5 +1,4 @@
-import { registerPlugin, HandledRoute, getPluginConfig } from '@scullyio/scully';
-import { scullyConfig } from '@scullyio/scully';
+import { registerPlugin, HandledRoute, scullyConfig, getPluginConfig } from '@scullyio/scully';
 
 declare var require: any;
 const path = require('path');
