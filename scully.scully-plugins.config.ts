@@ -8,6 +8,7 @@ const SitemapPlugin = getSitemapPlugin();
 setPluginConfig(SitemapPlugin, {
     urlPrefix: 'https://gamma.stream',
     sitemapFilename: 'sitemap.xml',
+    merge: false,
     changeFreq: 'monthly',
     priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
     ignoredRoutes: ['/404'],
@@ -15,7 +16,8 @@ setPluginConfig(SitemapPlugin, {
         '/products/:productId': {
             changeFreq: 'daily',
             priority: '0.9',
-            sitemapFilename: 'sitemap-products.xml'
+            sitemapFilename: 'sitemap-products.xml',
+            merge: true,
         },
     }
 });

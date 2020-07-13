@@ -9,6 +9,9 @@ export class SitemapConfig {
     /** Where do you want to store the sitemap file? */
     sitemapFilename: string;
 
+    /** Merge handled routes into existing sitemap file (if available)? */
+    merge?: boolean;
+
     /** How often is the route expected to change? */
     changeFreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
 
@@ -32,6 +35,7 @@ export class SitemapConfig {
 export const defaultSitemapConfig: SitemapConfig = {
     urlPrefix: 'http://localhost',
     sitemapFilename: 'sitemap.xml',
+    merge: false,
     changeFreq: 'monthly',
     priority: '0.5',
     suppressLog: false

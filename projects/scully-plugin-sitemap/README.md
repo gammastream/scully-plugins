@@ -25,6 +25,7 @@ const SitemapPlugin = getSitemapPlugin();
 setPluginConfig(SitemapPlugin, {
     urlPrefix: 'https://gamma.stream',
     sitemapFilename: 'sitemap.xml',
+    merge: false,
     changeFreq: 'monthly',
     priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
     ignoredRoutes: ['/404'],
@@ -32,7 +33,8 @@ setPluginConfig(SitemapPlugin, {
         '/products/:productId': {
             changeFreq: 'daily',
             priority: '0.9',
-            sitemapFilename: 'sitemap-products.xml'
+            sitemapFilename: 'sitemap-products.xml',
+            merge: true
         },
     }
 });
@@ -74,11 +76,27 @@ The priority of a route can be configured by setting the priority level based on
 ]
 ```
 
+## Partial Generation with --routeFilter
+
+Version 1.0.1 adds the `merge` flag.  Setting the flag to true causes the generated routes to be merged into the existing sitemap file (if there is one).  This allows users to generate a subset of routes without overwriting previously generated routes within the sitemap.
+
+```javascript
+	// excerpt
+    routes: {
+        '/products/:productId': {
+            changeFreq: 'daily',
+            priority: '0.9',
+            sitemapFilename: 'sitemap-products.xml',
+            merge: true
+        },
+    }
+```
+
 ## Notes
 
-* Currently, the default priority (0.5) is assigned to all routes.  Planned for a future update is the ability to assign a priority based on the number of segments in a route. (Completed in v0.0.4)
+* ~~Currently, the default priority (0.5) is assigned to all routes.  Planned for a future update is the ability to assign a priority based on the number of segments in a route.~~ (Completed in v0.0.4)
 
-* Sitemap is regenerated with every route.  At some time in the future, we expect Scully to support a class of plugins that run after it is finished generating all the routes. (Completed in v1.0.0)
+* ~~Sitemap is regenerated with every route.  At some time in the future, we expect Scully to support a class of plugins that run after it is finished generating all the routes.~~ (Completed in v1.0.0)
 
 ## Questions or Issues
 

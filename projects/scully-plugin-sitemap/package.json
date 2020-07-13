@@ -1,13 +1,14 @@
 {
   "name": "@gammastream/scully-plugin-sitemap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {
-    "@scullyio/scully": "latest"
+    "@scullyio/scully": "0.0.99"
   },
   "devDependencies": {
     "@types/node": "^7.10.10",
-    "xmlbuilder": "^13.0.2",
-    "path-to-regexp": "^0.1.7"
+    "fast-xml-parser": "^3.17.4",
+    "path-to-regexp": "^0.1.7",
+    "xmlbuilder": "^13.0.2"
   },
   "description": "A Scully routeDiscoveryDone plugin for generating xml sitemaps.",
   "maintainers": [

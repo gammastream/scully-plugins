@@ -1,5 +1,4 @@
-import { registerPlugin, HandledRoute, ScullyConfig, getPluginConfig } from '@scullyio/scully';
-import { scullyConfig } from '@scullyio/scully';
+import { registerPlugin, HandledRoute, scullyConfig, getPluginConfig } from '@scullyio/scully';
 import { SitemapConfig, defaultSitemapConfig } from './sitemap-config';
 
 declare var require: any;
@@ -8,6 +7,7 @@ const path = require('path');
 const builder = require('xmlbuilder');
 const url = require('url');
 const pathToRegexp = require('path-to-regexp');
+const xmlParser = require('fast-xml-parser');
 
 const today  = new Date();
 
@@ -36,6 +36,7 @@ const configForRoute = (config: SitemapConfig, route: HandledRoute) => {
           route: route.route,
           urlPrefix: routeConfig.urlPrefix || config.urlPrefix,
           sitemapFilename: routeConfig.sitemapFilename || config.sitemapFilename,
+          merge: routeConfig.merge || config.merge,
           changeFreq: routeConfig.changeFreq || config.changeFreq,
           priority: routeConfig.priority || config.priority
         };
@@ -46,17 +47,60 @@ const configForRoute = (config: SitemapConfig, route: HandledRoute) => {
     route: route.route,
     urlPrefix: config.urlPrefix,
     sitemapFilename: config.sitemapFilename,
+    merge: config.merge,
     changeFreq: config.changeFreq,
     priority: config.priority
   };
 };
 
+const getSitemapFile = (filename) => {
+  return path.join(scullyConfig.outDir, filename);
+};
+
+const loadMap = (filename) => {
+  const file = getSitemapFile(filename);
+  if ( fs.existsSync(file) ) {
+    const xmlString = fs.readFileSync(file, {encoding: 'utf8', flag: 'r'});
+    const xml = parseXml(xmlString);
+    // build url object
+    const map = {};
+    for (const mappedUrl of xml.urlset.url) {
+      map[mappedUrl.loc] = mappedUrl;
+    }
+    return map;
+  } else {
+    return null;
+  }
+};
+
+const saveMap = (map, filename) => {
+  const file = getSitemapFile(filename);
+  const rootElement = builder.create('urlset').att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+  for (const route of Object.values(map) as any[]) {
+    const urlElement = rootElement.ele('url');
+    urlElement.ele('loc', route.loc);
+    urlElement.ele('changefreq', route.changefreq);
+    urlElement.ele('lastmod', route.lastmod);
+    urlElement.ele('priority', route.priority);
+  }
+  const xml = rootElement.end({ pretty: true});
+  fs.writeFileSync(file, xml);
+  return rootElement;
+};
+
+const parseXml = (xmlString) => {
+  return xmlParser.parse(xmlString);
+};
+
 const getMapForRoute = (maps: any, routeConfig: any) => {
   let map = maps[routeConfig.sitemapFilename];
-  if ( !map ) {
-    map = builder.create('urlset').att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-    maps[routeConfig.sitemapFilename] = map;
+  if (!map && routeConfig.merge ) {
+    map = loadMap( routeConfig.sitemapFilename );
   }
+  if ( !map ) {
+    map = {};
+  }
+  maps[routeConfig.sitemapFilename] = map;
   return map;
 };
 
@@ -87,19 +131,18 @@ export const sitemapPlugin = async (routes: HandledRoute[]) => {
     }
     const routeConfig = configForRoute(config, route);
     const map = getMapForRoute(maps, routeConfig);
-    const urlElement = map.ele('url');
-    urlElement.ele('loc', url.resolve(routeConfig.urlPrefix, route.route));
-    urlElement.ele('changefreq', routeConfig.changeFreq);
-    urlElement.ele('lastmod', today.toISOString());
-    urlElement.ele('priority', priorityForLocation(route.route, routeConfig));
+    const loc = url.resolve(routeConfig.urlPrefix, route.route);
+    map[loc] = {
+      loc,
+      changefreq: routeConfig.changeFreq,
+      lastmod: today.toISOString(),
+      priority: priorityForLocation(route.route, routeConfig)
+    };
   });
 
   // tslint:disable-next-line: forin
   for (const filename in maps) {
-    const sitemapFile = path.join(scullyConfig.outDir, filename);
-    const rootElement = maps[filename];
-    const xml = rootElement.end({ pretty: true});
-    fs.writeFileSync(sitemapFile, xml);
+    const rootElement = saveMap(maps[filename], filename);
     const routeCount = rootElement.children.length;
     log(`Wrote ${ routeCount } ${ pluralizer(routeCount, 'route', 'routes') } to ${ filename }`);
   }
