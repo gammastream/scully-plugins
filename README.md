@@ -10,7 +10,7 @@ This `postRenderer` plugin will apply the configured regex replacements to your 
 
 This plugin generates route id/handles for Shopify products and collections.
 
-## [@gammastream/scully-plugin-http404](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-http404)
+## [@gammastream/scully-plugin-sitemap](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-sitemap)
 
 This plugin generates a [sitemap.xml](https://www.sitemaps.org/protocol.html) file suitable for submitting to Google's search console.
 
