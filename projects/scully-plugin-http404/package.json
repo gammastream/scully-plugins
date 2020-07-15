@@ -2,9 +2,7 @@
   "name": "@gammastream/scully-plugin-http404",
   "version": "1.0.2",
   "peerDependencies": {
-    "@scullyio/scully": "latest"
-  },
-  "devDependencies": {
+    "@scullyio/scully": "latest",
     "@types/node": "^7.10.9"
   },
   "description": "A Scully plugin for generating a 404.html file at the root level.",
