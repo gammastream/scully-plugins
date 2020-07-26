@@ -35,6 +35,7 @@ const configForRoute = (config: SitemapConfig, route: HandledRoute) => {
         return {
           route: route.route,
           urlPrefix: routeConfig.urlPrefix || config.urlPrefix,
+          trailingSlash: routeConfig.trailingSlash || config.trailingSlash,
           sitemapFilename: routeConfig.sitemapFilename || config.sitemapFilename,
           merge: routeConfig.merge || config.merge,
           changeFreq: routeConfig.changeFreq || config.changeFreq,
@@ -46,6 +47,7 @@ const configForRoute = (config: SitemapConfig, route: HandledRoute) => {
   return {
     route: route.route,
     urlPrefix: config.urlPrefix,
+    trailingSlash: config.trailingSlash,
     sitemapFilename: config.sitemapFilename,
     merge: config.merge,
     changeFreq: config.changeFreq,
@@ -131,7 +133,10 @@ export const sitemapPlugin = async (routes: HandledRoute[]) => {
     }
     const routeConfig = configForRoute(config, route);
     const map = getMapForRoute(maps, routeConfig);
-    const loc = url.resolve(routeConfig.urlPrefix, route.route);
+    let loc = url.resolve(routeConfig.urlPrefix, route.route);
+    if ( routeConfig.trailingSlash && !loc.endsWith('/') ) {
+      loc = loc + '/';
+    }
     map[loc] = {
       loc,
       changefreq: routeConfig.changeFreq,

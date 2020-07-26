@@ -27,6 +27,9 @@ export class SitemapConfig {
     /** List of optional configuration for specific routes */
     routes?: any[];
 
+    /** would you like to append a trailing slash to the url */
+    trailingSlash?: boolean;
+
 }
 
 /**
@@ -38,5 +41,6 @@ export const defaultSitemapConfig: SitemapConfig = {
     merge: false,
     changeFreq: 'monthly',
     priority: '0.5',
-    suppressLog: false
+    suppressLog: false,
+    trailingSlash: false
 };

@@ -16,9 +16,28 @@ setPluginConfig(SitemapPlugin, {
     ignoredRoutes: ['/404'],
     routes: {
         '/products/:productId': {
+            trailingSlash: true,
             changeFreq: 'daily',
             priority: '0.9',
             sitemapFilename: 'sitemap-products.xml',
+            merge: false,
+        },
+        '/shopify-collections/:collectionHandle': {
+            changeFreq: 'daily',
+            priority: '0.9',
+            sitemapFilename: 'sitemap-shopify.xml',
+            merge: true,
+        },
+        '/shopify-collections/:collectionHandle/:id': {
+            changeFreq: 'daily',
+            priority: '0.9',
+            sitemapFilename: 'sitemap-shopify.xml',
+            merge: true,
+        },
+        '/shopify-product/:productHandle': {
+            changeFreq: 'daily',
+            priority: '0.9',
+            sitemapFilename: 'sitemap-shopify.xml',
             merge: true,
         },
     }
