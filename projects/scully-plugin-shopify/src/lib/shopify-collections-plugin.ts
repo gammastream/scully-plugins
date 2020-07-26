@@ -8,7 +8,7 @@ export const shopifyCollectionsPlugin = async (route: string, routeConfig: any):
     const { params, createPath } = routeSplit(route);
     const missingParams = params.filter((param) => !routeConfig.hasOwnProperty(param.part));
     if (missingParams.length > 0) {
-      console.error(`missing config for parameters (${missingParams.join(',')}) in route: ${route}. Skipping`);
+      logError(`missing config for parameters (${missingParams.join(',')}) in route "${yellow(route)}" - skipping`);
       return [{ route, type: routeConfig.type }];
     }
 

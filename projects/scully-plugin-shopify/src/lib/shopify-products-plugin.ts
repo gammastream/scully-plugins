@@ -9,7 +9,7 @@ try {
     const { params, createPath } = routeSplit(route);
     const missingParams = params.filter((param) => !routeConfig.hasOwnProperty(param.part));
     if (missingParams.length > 0) {
-        console.error(`missing config for parameters (${missingParams.join(',')}) in route: ${route}. Skipping`);
+        console.error(`missing config for parameters (${missingParams.join(',')}) in route "${yellow(route)}" - skipping`);
         return [{ route, type: routeConfig.type }];
     }
 
@@ -23,7 +23,6 @@ try {
     const products = await client.product.fetchQuery(query);
 
     const routes = products.map((product) => {
-        console.log( product );
         const data = [];
         params.forEach((param) => {
             data.push( product[routeConfig[param.part].property] );
@@ -35,9 +34,9 @@ try {
         type: routeConfig.type,
     }));
     } catch (e) {
-    console.log( e );
-    logError(`Could not fetch data for route "${yellow(route)}"`);
-    return [{ route, type: routeConfig.type }];
+        console.log( e );
+        logError(`Could not fetch data for route "${yellow(route)}"`);
+        return [{ route, type: routeConfig.type }];
     }
 };
 
