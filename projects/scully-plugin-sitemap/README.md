@@ -12,6 +12,20 @@ To install this library with `npm` run
 $ npm install @gammastream/scully-plugin-sitemap --save-dev
 ```
 
+## Dependencies
+
+The following peer dependencies are must be installed separately.  Most are installed when install Angular or Scully.  You'll likely only need to worry about `fast-xml-parser` and `xmlbuilder`.
+
+```json
+  "peerDependencies": {
+    "@scullyio/scully": "0.0.99",
+    "@types/node": "^7.10.10",
+    "fast-xml-parser": "^3.17.4",
+    "path-to-regexp": "^0.1.7",
+    "xmlbuilder": "^13.0.2"
+  },	
+```
+
 ## Usage
 
 Within your Scully config (typescript), get and configure the plugin like so:
@@ -26,6 +40,7 @@ setPluginConfig(SitemapPlugin, {
     urlPrefix: 'https://gamma.stream',
     sitemapFilename: 'sitemap.xml',
     merge: false,
+    trailingSlash: false,
     changeFreq: 'monthly',
     priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
     ignoredRoutes: ['/404'],
@@ -63,6 +78,8 @@ npm run build
 npm run scully
 ```
 
+
+
 ## Configuring Priority
 
 The priority of a route can be configured by setting the priority level based on the number of segments in a given route.
@@ -90,6 +107,20 @@ Version 1.0.1 adds the `merge` flag.  Setting the flag to true causes the genera
             merge: true
         },
     }
+```
+
+## SEO Optimization & Trailing Slash
+
+Version 1.0.2 adds the `trailingSlash` flag.  Setting the flag to true causes the url to be suffixed with a `/`.  This is useful for SEO.  You can set it for the main config or for individual routes.
+
+```javascript
+const SitemapPlugin = getSitemapPlugin();
+setPluginConfig(SitemapPlugin, {
+    urlPrefix: 'https://gamma.stream',
+    sitemapFilename: 'sitemap.xml',
+    merge: false,
+    trailingSlash: true,
+});
 ```
 
 ## Notes
