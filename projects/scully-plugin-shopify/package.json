@@ -1,8 +1,8 @@
 {
   "name": "@gammastream/scully-plugin-shopify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "peerDependencies": {
-    "@scullyio/scully": "0.0.99",
+    "@scullyio/scully": "^1.0",
     "node-fetch": "^2.6.0",
     "shopify-buy": "^2.11.0"
   },
