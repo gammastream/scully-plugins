@@ -18,8 +18,7 @@ The following peer dependencies are must be installed separately.  Most are inst
 
 ```json
   "peerDependencies": {
-    "@scullyio/scully": "0.0.99",
-    "@types/node": "^7.10.10",
+    "@scullyio/scully": "^1.0",
     "fast-xml-parser": "^3.17.4",
     "path-to-regexp": "^0.1.7",
     "xmlbuilder": "^13.0.2"
