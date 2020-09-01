@@ -27,7 +27,7 @@
     "@angular/router": "^10.0.14",
     "@scullyio/init": "0.0.29",
     "@scullyio/ng-lib": "0.0.27",
-    "@scullyio/scully": "0.0.99",
+    "@scullyio/scully": "1.0.0-beta.3",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.1",
     "zone.js": "^0.10.3"
