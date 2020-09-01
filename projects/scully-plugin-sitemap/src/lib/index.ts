@@ -106,7 +106,7 @@ const getMapForRoute = (maps: any, routeConfig: any) => {
   return map;
 };
 
-export const sitemapPlugin = async (routes: HandledRoute[]) => {
+export const sitemapPlugin = async (routes: HandledRoute[]): Promise<void> => {
   const config = Object.assign({}, defaultSitemapConfig, getPluginConfig(SitemapPlugin));
 
   const log = (message?: any, ...optionalParams: any[]): void => {
@@ -154,7 +154,6 @@ export const sitemapPlugin = async (routes: HandledRoute[]) => {
 
   log(`Finished @gammastream/scully-plugin-sitemap`);
 
-  return Promise.resolve('done');
 };
 
 const SitemapPlugin = 'sitemap';
