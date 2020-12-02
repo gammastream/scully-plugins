@@ -1,6 +1,6 @@
 {
   "name": "@gammastream/scully-plugin-sitemap",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "peerDependencies": {
     "@scullyio/scully": "^1.0",
     "fast-xml-parser": "^3.17.4",
