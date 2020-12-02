@@ -3,3 +3,4 @@
  */
 
 export { getSitemapPlugin } from './lib/index';
+export { SitemapConfig }  from './lib/sitemap-config';
