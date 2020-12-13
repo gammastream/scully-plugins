@@ -1,9 +1,9 @@
 {
   "name": "@gammastream/scully-plugin-shopify",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
     "@scullyio/scully": "^1.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "shopify-buy": "^2.11.0"
   },
   "description": "A Scully router plugin for fetching products and collections from Shopify.",
