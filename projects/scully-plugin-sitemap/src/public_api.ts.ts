@@ -3,4 +3,4 @@
  */
 
 export { getSitemapPlugin } from './lib/index';
-export { SitemapConfig }  from './lib/sitemap-config';
+export { SitemapConfig, SitemapRoute }  from './lib/sitemap-config';

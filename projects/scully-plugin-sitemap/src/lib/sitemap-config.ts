@@ -1,6 +1,25 @@
 /**
  * The sitemap configuration options.
  */
+export class SitemapRoute {
+  
+     /** How often is the route expected to change? */
+    changeFreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
+  
+    /** Where do you want to store the sitemap file? */
+    sitemapFilename: string;
+  
+    /** Merge handled routes into existing sitemap file (if available)? */
+    merge?: boolean;
+    
+    /** A list of priorities to set based on number of segments in the route */
+    priority?: string | string[];
+  
+}
+
+/**
+ * The sitemap configuration options.
+ */
 export class SitemapConfig {
 
     /** What is the base url to your app. */
@@ -25,7 +44,7 @@ export class SitemapConfig {
     suppressLog?: boolean;
 
     /** List of optional configuration for specific routes */
-    routes?: any[];
+    routes?: { [route: string]: SitemapRoute };
 
     /** would you like to append a trailing slash to the url */
     trailingSlash?: boolean;
