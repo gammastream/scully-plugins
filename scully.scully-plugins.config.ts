@@ -1,5 +1,5 @@
 import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
-import { getSitemapPlugin } from './dist/scully-plugin-sitemap';
+import { SitemapConfig, getSitemapPlugin } from './dist/scully-plugin-sitemap';
 import { getRegexPlugin } from './dist/scully-plugin-regex';
 import { getHttp404Plugin } from './dist/scully-plugin-http404';
 import { getShopifyCollectionsPlugin , getShopifyProductsPlugin} from './dist/scully-plugin-shopify';
@@ -7,41 +7,42 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const SitemapPlugin = getSitemapPlugin();
-setPluginConfig(SitemapPlugin, {
-    urlPrefix: 'https://gamma.stream',
-    sitemapFilename: 'sitemap.xml',
-    merge: false,
-    changeFreq: 'monthly',
-    priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
-    ignoredRoutes: ['/404'],
-    routes: {
-        '/products/:productId': {
-            trailingSlash: true,
-            changeFreq: 'daily',
-            priority: '0.9',
-            sitemapFilename: 'sitemap-products.xml',
-            merge: false,
-        },
-        '/shopify-collections/:collectionHandle': {
-            changeFreq: 'daily',
-            priority: '0.9',
-            sitemapFilename: 'sitemap-shopify.xml',
-            merge: true,
-        },
-        '/shopify-collections/:collectionHandle/:id': {
-            changeFreq: 'daily',
-            priority: '0.9',
-            sitemapFilename: 'sitemap-shopify.xml',
-            merge: true,
-        },
-        '/shopify-product/:productHandle': {
-            changeFreq: 'daily',
-            priority: '0.9',
-            sitemapFilename: 'sitemap-shopify.xml',
-            merge: true,
-        },
-    }
-});
+const sitemapConfig: SitemapConfig = {
+  urlPrefix: 'https://gamma.stream',
+  sitemapFilename: 'sitemap.xml',
+  merge: false,
+  changeFreq: 'monthly',
+  priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
+  ignoredRoutes: ['/404'],
+  routes: {
+      '/products/:productId': {
+          trailingSlash: true,
+          changeFreq: 'daily',
+          priority: '0.9',
+          sitemapFilename: 'sitemap-products.xml',
+          merge: false,
+      },
+      '/shopify-collections/:collectionHandle': {
+          changeFreq: 'daily',
+          priority: '0.9',
+          sitemapFilename: 'sitemap-shopify.xml',
+          merge: true,
+      },
+      '/shopify-collections/:collectionHandle/:id': {
+          changeFreq: 'daily',
+          priority: '0.9',
+          sitemapFilename: 'sitemap-shopify.xml',
+          merge: true,
+      },
+      '/shopify-product/:productHandle': {
+          changeFreq: 'daily',
+          priority: '0.9',
+          sitemapFilename: 'sitemap-shopify.xml',
+          merge: true,
+      },
+  }
+}
+setPluginConfig(SitemapPlugin, sitemapConfig);
 
 const RegexPlugin = getRegexPlugin();
 setPluginConfig(RegexPlugin, {

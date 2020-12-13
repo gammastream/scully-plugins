@@ -2,19 +2,28 @@
  * The sitemap configuration options.
  */
 export class SitemapRoute {
-  
+
+    /** The path RegExp (automatically generated) */
+    regexp?: RegExp;
+
+    /** What is the base url to your app. */
+    urlPrefix?: string;
+
      /** How often is the route expected to change? */
     changeFreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
-  
+
     /** Where do you want to store the sitemap file? */
-    sitemapFilename: string;
-  
+    sitemapFilename?: string;
+
     /** Merge handled routes into existing sitemap file (if available)? */
     merge?: boolean;
-    
+
     /** A list of priorities to set based on number of segments in the route */
     priority?: string | string[];
-  
+
+    /** would you like to append a trailing slash to the url */
+    trailingSlash?: boolean;
+
 }
 
 /**
