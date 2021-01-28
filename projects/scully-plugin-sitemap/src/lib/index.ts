@@ -5,11 +5,20 @@ declare var require: any;
 const fs = require('fs');
 const path = require('path');
 const builder = require('xmlbuilder');
-const url = require('url');
 const pathToRegexp = require('path-to-regexp');
 const xmlParser = require('fast-xml-parser');
 
 const today  = new Date();
+
+const mergePaths = (base: string, path: string): string => {
+  if (base.endsWith('/') && path.startsWith('/')) {
+    return `${base}${path.substr(1)}`;
+  }
+  if (!base.endsWith('/') && !path.startsWith('/')) {
+    return `${base}/${path}`;
+  }
+  return `${base}${path}`;
+}
 
 const priorityForLocation = (loc: string, config: SitemapConfig) => {
   if (typeof config.priority === 'string' || config.priority instanceof String) {
@@ -133,7 +142,7 @@ export const sitemapPlugin = async (routes: HandledRoute[]): Promise<void> => {
     }
     const routeConfig = configForRoute(config, route);
     const map = getMapForRoute(maps, routeConfig);
-    let loc = url.resolve(routeConfig.urlPrefix, route.route);
+    let loc = mergePaths(routeConfig.urlPrefix, route.route);
     if ( routeConfig.trailingSlash && !loc.endsWith('/') ) {
       loc = loc + '/';
     }
