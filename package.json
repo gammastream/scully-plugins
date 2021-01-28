@@ -11,9 +11,13 @@
     "scully": "scully",
     "scully:serve": "scully serve",
     "build:sitemap": "ng build scully-plugin-sitemap --prod",
+    "publish:sitemap": "npm run build:sitemap && npm publish dist/scully-plugin-sitemap --access public",
     "build:regex": "ng build scully-plugin-regex --prod",
+    "publish:regex": "npm run build:regex && npm publish dist/scully-plugin-regex --access public",
     "build:http404": "ng build scully-plugin-http404 --prod",
+    "publish:http404": "npm run build:http404 && npm publish dist/scully-plugin-http404 --access public",
     "build:shopify": "ng build scully-plugin-shopify --prod",
+    "publish:shopify": "npm run build:shopify && npm publish dist/scully-plugin-shopify --access public",
     "build:all": "npm run build:sitemap && npm run build:regex && npm run build:http404 && npm run build:shopify",
     "push": "git push -u origin master"
   },
