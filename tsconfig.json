@@ -1,34 +1,32 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
     "paths": {
       "scully-sitemap": [
         "dist/scully-sitemap/scully-sitemap",
         "dist/scully-sitemap"
-      ],
-      "@recursyve/scully-sitemap": [
-        "dist/scully-sitemap"
       ]
-    }
+    },
+    "target": "es2017",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
