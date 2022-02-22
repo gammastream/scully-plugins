@@ -2,8 +2,8 @@
   "name": "scully-plugins",
   "version": "0.0.1",
   "scripts": {
-    "build:sitemap": "ng build scully-plugin-sitemap --prod",
-    "publish:sitemap": "npm run build:sitemap && npm publish dist/scully-plugin-sitemap --access public"
+    "build:sitemap": "ng build scully-sitemap --prod",
+    "publish:sitemap": "npm run build:sitemap && npm publish dist/scully-sitemap --access public"
   },
   "private": true,
   "dependencies": {

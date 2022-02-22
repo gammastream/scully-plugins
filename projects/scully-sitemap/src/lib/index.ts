@@ -124,7 +124,7 @@ export const sitemapPlugin = async (routes: HandledRoute[]): Promise<void> => {
     }
   };
 
-  log(`Started @gammastream/scully-plugin-sitemap`);
+  log(`Started @recursyve/scully-sitemap`);
   log(`Generating sitemaps for ${ routes.length } ${ pluralizer(routes.length, 'route', 'routes') }.`);
 
   // parse route configurations
