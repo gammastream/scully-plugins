@@ -21,23 +21,12 @@
       "dom"
     ],
     "paths": {
-      "scully-plugin-regex": [
-        "dist/scully-plugin-regex/scully-plugin-regex",
-        "dist/scully-plugin-regex"
+      "scully-sitemap": [
+        "dist/scully-sitemap/scully-sitemap",
+        "dist/scully-sitemap"
       ],
-      "@gammastream/scully-plugin-regex": [
-        "dist/scully-plugin-regex"
-      ],
-      "scully-plugin-sitemap": [
-        "dist/scully-plugin-sitemap/scully-plugin-sitemap",
-        "dist/scully-plugin-sitemap"
-      ],
-      "@gammastream/scully-plugin-sitemap": [
-        "dist/scully-plugin-sitemap"
-      ],
-      "scully-plugin-http404": [
-        "dist/scully-plugin-http404/scully-plugin-http404",
-        "dist/scully-plugin-http404"
+      "@recursyve/scully-sitemap": [
+        "dist/scully-sitemap"
       ]
     }
   },
