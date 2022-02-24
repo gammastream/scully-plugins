@@ -2,6 +2,7 @@ import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { SitemapConfig, getSitemapPlugin } from './dist/scully-plugin-sitemap';
 import { getRegexPlugin } from './dist/scully-plugin-regex';
 import { getHttp404Plugin } from './dist/scully-plugin-http404';
+import { getEmojiPlugin } from './dist/scully-plugin-emoji';
 import { getShopifyCollectionsPlugin , getShopifyProductsPlugin} from './dist/scully-plugin-shopify';
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -64,7 +65,7 @@ setPluginConfig(RegexPlugin, {
 });
 
 const Http404Plugin = getHttp404Plugin();
-
+const EmojiPlugin = getEmojiPlugin();
 const shopifyConfig = {
     domain: process.env.SHOPIFY_DOMAIN,
     storefrontAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN
@@ -78,7 +79,7 @@ export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: 'scully-plugins',
   outDir: './dist/static',
-  defaultPostRenderers: [RegexPlugin, Http404Plugin],
+  defaultPostRenderers: [RegexPlugin, Http404Plugin, EmojiPlugin],
   routes: {
     '/products/:productId': {
         type: 'json',

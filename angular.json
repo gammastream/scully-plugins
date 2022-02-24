@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "scully-plugins": {
@@ -244,6 +244,46 @@
         }
       }
     },
+    "scully-plugin-emoji": {
+      "projectType": "library",
+      "root": "projects/scully-plugin-emoji",
+      "sourceRoot": "projects/scully-plugin-emoji/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/scully-plugin-emoji/tsconfig.lib.json",
+            "project": "projects/scully-plugin-emoji/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/scully-plugin-emoji/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scully-plugin-emoji/src/test.ts",
+            "tsConfig": "projects/scully-plugin-emoji/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-emoji/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scully-plugin-emoji/tsconfig.lib.json",
+              "projects/scully-plugin-emoji/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "scully-plugin-http404": {
       "projectType": "library",
       "root": "projects/scully-plugin-http404",
@@ -283,6 +323,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "scully-plugins"
+    }
+  },
+  "defaultProject": "scully-plugins",
+  "cli": {
+    "analytics": false
+  }
 }

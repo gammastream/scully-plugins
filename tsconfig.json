@@ -35,6 +35,13 @@
       "@gammastream/scully-plugin-sitemap": [
         "dist/scully-plugin-sitemap"
       ],
+      "@nhvu95/scully-plugin-emoji": [
+        "dist/scully-plugin-emoji"
+      ],
+      "scully-plugin-emoji": [
+        "dist/scully-plugin-emoji/scully-plugin-emoji",
+        "dist/scully-plugin-emoji"
+      ],
       "scully-plugin-http404": [
         "dist/scully-plugin-http404/scully-plugin-http404",
         "dist/scully-plugin-http404"

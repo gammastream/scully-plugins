@@ -12,6 +12,8 @@
     "scully:serve": "scully serve",
     "build:sitemap": "ng build scully-plugin-sitemap --prod",
     "publish:sitemap": "npm run build:sitemap && npm publish dist/scully-plugin-sitemap --access public",
+    "build:emoji": "ng build scully-plugin-emoji --prod",
+    "publish:emoji": "npm run build:emoji && npm publish dist/scully-plugin-emoji --access public",
     "build:regex": "ng build scully-plugin-regex --prod",
     "publish:regex": "npm run build:regex && npm publish dist/scully-plugin-regex --access public",
     "build:http404": "ng build scully-plugin-http404 --prod",
@@ -33,7 +35,8 @@
     "@angular/router": "^10.2.3",
     "@scullyio/init": "^1.0.1",
     "@scullyio/ng-lib": "0.0.27",
-    "@scullyio/scully": "^1.0.6",
+    "@scullyio/scully": "^1.1.1",
+    "@types/jsdom": "^16.2.14",
     "rxjs": "^6.6.3",
     "tslib": "^2.0.3",
     "zone.js": "^0.10.3"
