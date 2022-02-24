@@ -325,8 +325,5 @@
       }
     }
   },
-  "defaultProject": "scully-plugins",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "scully-plugins"
 }
