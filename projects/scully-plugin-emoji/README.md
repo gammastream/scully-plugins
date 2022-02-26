@@ -14,7 +14,7 @@ Will convert to
 To install this plugin with `npm` run
 
 ```
-$ npm install scully-plugin-emoji --save-dev
+$ npm install npm i @nhvu95/scully-plugin-emoji --save-dev
 ```
 
 peerDependencies is required:

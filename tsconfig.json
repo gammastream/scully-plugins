@@ -42,6 +42,10 @@
         "dist/scully-plugin-emoji/scully-plugin-emoji",
         "dist/scully-plugin-emoji"
       ],
+      "scully-plugin-scroll2section": [
+        "dist/scully-plugin-scroll2section/scully-plugin-scroll2section",
+        "dist/scully-plugin-scroll2section"
+      ],
       "scully-plugin-http404": [
         "dist/scully-plugin-http404/scully-plugin-http404",
         "dist/scully-plugin-http404"

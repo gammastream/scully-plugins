@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/scully-plugin-http404",
+  "dest": "../../dist/scully-plugin-scroll2section",
   "lib": {
     "entryFile": "src/public_api.ts.ts"
   }
