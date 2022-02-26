@@ -1,11 +1,11 @@
-# scully-plugin-emoji
+# scully-plugin-scroll2section
 
-The `scully-plugin-scroll2section` is a `postProcessByHtml` plugin for [Scully](http://scully.io/) that help `<a>` tag can route to a section in current static site.
+The `scully-plugin-scroll2section` is a `postProcessByHtml` plugin for [Scully](http://scully.io/) that help `<a>` tag can route and scroll to a section in current static site.
 
 For example:
 * 📦 Usage(#usage)
 
-This plugin helps `usage` above route to the `## Usage` bellow
+This plugin helps `usage` above scroll to the `## Usage` bellow
 
 
 ## 📦 Installation
