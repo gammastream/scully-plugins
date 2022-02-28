@@ -13,7 +13,7 @@ This plugin helps `usage` above scroll to the `## Usage` bellow
 To install this plugin with `npm` run
 
 ```
-$ npm install npm i @nhvu95/scully-plugin-scroll2section --save-dev
+$ npm install @nhvu95/scully-plugin-scroll2section --save-dev
 ```
 
 peerDependencies is required:
