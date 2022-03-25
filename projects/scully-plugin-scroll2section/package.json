@@ -1,6 +1,6 @@
 {
   "name": "@nhvu95/scully-plugin-scroll2section",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "peerDependencies": {
     "@scullyio/scully": "^1.1.0",
     "@types/jsdom": "^16.0.0"

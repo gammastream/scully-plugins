@@ -16,7 +16,9 @@ const addScrollScript = async (doc: Document, route) => {
   script.innerHTML = `
     function scrollSection(sectionId) {
       let elm = document.getElementById(sectionId);
-      elm.scrollIntoView({ behavior: 'smooth', block: 'start'});
+      if(elem != null) {
+        elm.scrollIntoView({ behavior: 'smooth', block: 'start'});
+      }
     }
   `;
   doc.head.appendChild(script);
