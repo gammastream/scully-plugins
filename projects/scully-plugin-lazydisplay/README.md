@@ -56,3 +56,21 @@ Add `id="scully-content"` to <scully-content> parent
     <scully-content></scully-content>
 </div>
 ```
+
+And in the component
+
+```typescript
+declare var loadLazyDisplay;
+@Component({
+    selector: "app-blog",
+    templateUrl: "./blog.component.html",
+    styleUrls: ["./blog.component.scss"]
+})
+export class BlogComponent implements OnInit, AfterViewInit {
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            loadLazyDisplay();
+        }, 0);
+    }
+}
+```

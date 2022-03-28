@@ -1,38 +1,43 @@
 import { HandledRoute, log, registerPlugin } from "@scullyio/scully";
 import { JSDOM } from "jsdom";
 
-const LazyDisplay = "lazyDisplay";
+const LazyDisplay = "lzDisplay";
 
 export const lazyDisplay = async (html: string, route: HandledRoute) => {
   const dom = new JSDOM(html);
   const doc = dom.window.document;
-  await addScrollScript(doc, route);
+  await addLazyScript(doc);
   return Promise.resolve(dom.serialize());
 };
 
-const addScrollScript = async (doc: Document, route) => {
+const addLazyScript = async (doc: Document) => {
   let script = doc.createElement("script");
   script.innerHTML = `
-    let options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0
+    function loadLazyDisplay() {
+      let options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0
+      }
+      
+      let callback = (entries, observer) => {
+        entries.forEach(entry => {
+        if(!entry.isIntersecting) entry.target.style.visibility = 'hidden';
+        else entry.target.style.visibility = 'visible';
+        });
+      };
+      
+      let observer = new IntersectionObserver(callback, options);
+      let target = document.getElementById('scully-content');
+      let items = [];
+      if(target != null) {
+        items = target.querySelectorAll(':scope > *');
+      }
+      
+      items.forEach(targ => {
+          observer.observe(targ);
+      }); 
     }
-    
-    let callback = (entries, observer) => {
-      // console.log(entries);
-      entries.forEach(entry => {
-      if(!entry.isIntersecting) entry.target.style.visibility = 'hidden';
-      else entry.target.style.visibility = 'visible';
-      });
-    };
-    
-    let observer = new IntersectionObserver(callback, options);
-    let target = document.getElementById('scully-content').querySelectorAll(':scope > *');
-    
-    target.forEach(targ => {
-        observer.observe(targ);
-    });
   `;
   doc.head.appendChild(script);
 };
