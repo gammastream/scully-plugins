@@ -203,6 +203,46 @@
           }
         }
       }
+    },
+    "scully-plugin-lazydisplay": {
+      "projectType": "library",
+      "root": "projects/scully-plugin-lazydisplay",
+      "sourceRoot": "projects/scully-plugin-lazydisplay/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/scully-plugin-lazydisplay/tsconfig.lib.json",
+            "project": "projects/scully-plugin-lazydisplay/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/scully-plugin-lazydisplay/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scully-plugin-lazydisplay/src/test.ts",
+            "tsConfig": "projects/scully-plugin-lazydisplay/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-lazydisplay/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scully-plugin-lazydisplay/tsconfig.lib.json",
+              "projects/scully-plugin-lazydisplay/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "scully-plugins",

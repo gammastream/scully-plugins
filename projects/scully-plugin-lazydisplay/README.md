@@ -1,6 +1,6 @@
-# scully-plugin-scroll2section
+# scully-plugin-lazydisplay
 
-The `scully-plugin-scroll2section` is a `postProcessByHtml` plugin for [Scully](http://scully.io/) that help `<a>` tag can route and scroll to a section in current static site.
+The `scully-plugin-lazydisplay` is a `postProcessByHtml` plugin for [Scully](http://scully.io/) that help scully display only the items on screen, the others will be hidden.
 
 For example:
 * 📦 Usage(#usage)
@@ -13,7 +13,7 @@ This plugin helps `usage` above scroll to the `## Usage` bellow
 To install this plugin with `npm` run
 
 ```
-$ npm install @nhvu95/scully-plugin-scroll2section --save-dev
+$ npm install @nhvu95/scully-plugin-lazydisplay --save-dev
 ```
 
 peerDependencies is required:
@@ -27,9 +27,9 @@ $ npm install @types/jsdom --save-dev
 Add plugin to `scully.*.config.ts` config
 
 ```typescript
-import { getScrollToSection } from "@nhvu95/scully-plugin-scroll2section";
+import { getLazyDisplay } from "@nhvu95/scully-plugin-lazydisplay";
 
-const ScrollToSection = getScrollToSection();
+const LazyDisplay = getLazyDisplay();
 
 export const config: ScullyConfig = {
     projectRoot: "./src",
@@ -42,9 +42,17 @@ export const config: ScullyConfig = {
             slug: {
                 folder: "./blog",
             },
-            postRenderers: [ScrollToSection],
+            postRenderers: [LazyDisplay],
         },
     },
 };
 
+```
+
+Add `id="scully-content"` to <scully-content> parent
+
+```html
+<div class="s-content" id="scully-content">
+    <scully-content></scully-content>
+</div>
 ```

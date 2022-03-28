@@ -14,6 +14,8 @@
     "publish:emoji": "npm run build:emoji && npm publish dist/scully-plugin-emoji --access public",
     "build:scroll2section": "ng build scully-plugin-scroll2section --prod",
     "publish:scroll2section": "npm run build:scroll2section && npm publish dist/scully-plugin-scroll2section --access public",
+    "build:lazydisplay": "ng build scully-plugin-lazydisplay --prod",
+    "publish:lazydisplay": "npm run build:lazydisplay && npm publish dist/scully-plugin-lazydisplay --access public",
     "build:all": "npm run build:sitemap && npm run build:regex && npm run build:http404 && npm run build:shopify",
     "push": "git push -u origin master"
   },
