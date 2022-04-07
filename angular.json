@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "scully-plugins": {
@@ -124,38 +124,38 @@
         }
       }
     },
-    "scully-plugin-regex": {
+    "scully-plugin-emoji": {
       "projectType": "library",
-      "root": "projects/scully-plugin-regex",
-      "sourceRoot": "projects/scully-plugin-regex/src",
+      "root": "projects/scully-plugin-emoji",
+      "sourceRoot": "projects/scully-plugin-emoji/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/scully-plugin-regex/tsconfig.lib.json",
-            "project": "projects/scully-plugin-regex/ng-package.json"
+            "tsConfig": "projects/scully-plugin-emoji/tsconfig.lib.json",
+            "project": "projects/scully-plugin-emoji/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/scully-plugin-regex/tsconfig.lib.prod.json"
+              "tsConfig": "projects/scully-plugin-emoji/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/scully-plugin-regex/src/test.ts",
-            "tsConfig": "projects/scully-plugin-regex/tsconfig.spec.json",
-            "karmaConfig": "projects/scully-plugin-regex/karma.conf.js"
+            "main": "projects/scully-plugin-emoji/src/test.ts",
+            "tsConfig": "projects/scully-plugin-emoji/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-emoji/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/scully-plugin-regex/tsconfig.lib.json",
-              "projects/scully-plugin-regex/tsconfig.spec.json"
+              "projects/scully-plugin-emoji/tsconfig.lib.json",
+              "projects/scully-plugin-emoji/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -164,38 +164,38 @@
         }
       }
     },
-    "scully-plugin-shopify": {
+    "scully-plugin-scroll2section": {
       "projectType": "library",
-      "root": "projects/scully-plugin-shopify",
-      "sourceRoot": "projects/scully-plugin-shopify/src",
+      "root": "projects/scully-plugin-scroll2section",
+      "sourceRoot": "projects/scully-plugin-scroll2section/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/scully-plugin-shopify/tsconfig.lib.json",
-            "project": "projects/scully-plugin-shopify/ng-package.json"
+            "tsConfig": "projects/scully-plugin-scroll2section/tsconfig.lib.json",
+            "project": "projects/scully-plugin-scroll2section/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/scully-plugin-shopify/tsconfig.lib.prod.json"
+              "tsConfig": "projects/scully-plugin-scroll2section/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/scully-plugin-shopify/src/test.ts",
-            "tsConfig": "projects/scully-plugin-shopify/tsconfig.spec.json",
-            "karmaConfig": "projects/scully-plugin-shopify/karma.conf.js"
+            "main": "projects/scully-plugin-scroll2section/src/test.ts",
+            "tsConfig": "projects/scully-plugin-scroll2section/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-scroll2section/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/scully-plugin-shopify/tsconfig.lib.json",
-              "projects/scully-plugin-shopify/tsconfig.spec.json"
+              "projects/scully-plugin-scroll2section/tsconfig.lib.json",
+              "projects/scully-plugin-scroll2section/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -204,38 +204,38 @@
         }
       }
     },
-    "scully-plugin-sitemap": {
+    "scully-plugin-lazydisplay": {
       "projectType": "library",
-      "root": "projects/scully-plugin-sitemap",
-      "sourceRoot": "projects/scully-plugin-sitemap/src",
+      "root": "projects/scully-plugin-lazydisplay",
+      "sourceRoot": "projects/scully-plugin-lazydisplay/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/scully-plugin-sitemap/tsconfig.lib.json",
-            "project": "projects/scully-plugin-sitemap/ng-package.json"
+            "tsConfig": "projects/scully-plugin-lazydisplay/tsconfig.lib.json",
+            "project": "projects/scully-plugin-lazydisplay/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/scully-plugin-sitemap/tsconfig.lib.prod.json"
+              "tsConfig": "projects/scully-plugin-lazydisplay/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/scully-plugin-sitemap/src/test.ts",
-            "tsConfig": "projects/scully-plugin-sitemap/tsconfig.spec.json",
-            "karmaConfig": "projects/scully-plugin-sitemap/karma.conf.js"
+            "main": "projects/scully-plugin-lazydisplay/src/test.ts",
+            "tsConfig": "projects/scully-plugin-lazydisplay/tsconfig.spec.json",
+            "karmaConfig": "projects/scully-plugin-lazydisplay/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/scully-plugin-sitemap/tsconfig.lib.json",
-              "projects/scully-plugin-sitemap/tsconfig.spec.json"
+              "projects/scully-plugin-lazydisplay/tsconfig.lib.json",
+              "projects/scully-plugin-lazydisplay/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -243,46 +243,10 @@
           }
         }
       }
-    },
-    "scully-plugin-http404": {
-      "projectType": "library",
-      "root": "projects/scully-plugin-http404",
-      "sourceRoot": "projects/scully-plugin-http404/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/scully-plugin-http404/tsconfig.lib.json",
-            "project": "projects/scully-plugin-http404/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/scully-plugin-http404/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/scully-plugin-http404/src/test.ts",
-            "tsConfig": "projects/scully-plugin-http404/tsconfig.spec.json",
-            "karmaConfig": "projects/scully-plugin-http404/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/scully-plugin-http404/tsconfig.lib.json",
-              "projects/scully-plugin-http404/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    }},
-  "defaultProject": "scully-plugins"
+    }
+  },
+  "defaultProject": "scully-plugins",
+  "cli": {
+    "analytics": "38d88a17-77fc-4d3a-be85-f833bd0abc0f"
+  }
 }

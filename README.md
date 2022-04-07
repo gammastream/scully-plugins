@@ -2,34 +2,37 @@
 
 A collection of plugins written for [Scully](http://scully.io/)
 
-## [@gammastream/scully-plugin-regex](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-regex)
+## [@nhvu95/scully-plugin-emoji](https://github.com/nhvu95/scully-plugins/tree/master/projects/scully-plugin-emoji)
 
-This `postRenderer` plugin will apply the configured regex replacements to your Scully rendered HTML.
+The `scully-plugin-emoji` is a `postProcessByHtml` plugin for [Scully](http://scully.io/) that convert the emoji syntax of Github to Emoji Syntax.
+It only converts content in the tag `<p>` of `Html`:
 
-## [@gammastream/scully-plugin-shopify](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-shopify)
+>Don't overestimate me! I don't remember and know all these **:grinning:**
 
-This plugin generates route id/handles for Shopify products and collections.
+Will convert to
 
-## [@gammastream/scully-plugin-sitemap](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-sitemap)
+>Don't overestimate me! I don't remember and know all these 😀
 
-This plugin generates a [sitemap.xml](https://www.sitemaps.org/protocol.html) file suitable for submitting to Google's search console.
+## [@nhvu95/scully-plugin-scroll2section](https://github.com/nhvu95/scully-plugins/tree/master/projects/scully-plugin-scroll2section)
 
-## [@gammastream/scully-plugin-http404](https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-http404)
+The `scully-plugin-scroll2section` is a `postProcessByHtml` plugin for [Scully](http://scully.io/) that help `<a>` tag can routes and scrolls to a section in current static site.
 
-This plugin saves a copy of a root `/404` route and saves it as `/404.html` in the root of the output directory.  This is useful for fulfilling the Firebase hosting config requirements for `404s` while maintaining the generation of that page via Angular.
+For example:
+* 📦 Usage(#usage)
+
+This plugin helps `usage` above scroll to the `## Usage` bellow
 
 ## Questions or Issues
 
-If you have any issues you can raise them here or contact me at: [GammaStream](https://gamma.stream)
+If you have any issues you can raise them here or contact me at: [Vue Nguyen](https://nhvu95.com)
 
 ----
 
-#### Created by
+#### I forked the base and modifed to new one from:
 
+Source
 ![logo GammaStream](assets/gammastream-logo-100x100.png)
 
 [**_GAMMASTREAM_**][gammastream]
-
-
 
 [gammastream]: http://www.gammastream.com

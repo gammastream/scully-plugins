@@ -1,0 +1,32 @@
+{
+  "name": "@nhvu95/scully-plugin-lazydisplay",
+  "version": "1.1.0",
+  "peerDependencies": {
+    "@scullyio/scully": "^1.1.0",
+    "@types/jsdom": "^16.0.0"
+  },
+  "description": "A Scully plugin to help render only scully-content items which display on the screen, and hide the others.",
+  "maintainers": [
+    "Vue Nguyen <nhvu95@gmail.com> (https://nhvu95.github.io)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nhvu95/scully-plugins/tree/master/projects/scully-plugin-lazydisplay"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "scully-plugin",
+    "section",
+    "scrolling"
+  ],
+  "author": "Vue Nguyen <nhvu95@gmail.com> (https://nhvu95.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nhvu95/scully-plugins/issues"
+  },
+  "homepage": "https://github.com/nhvu95/scully-plugins/tree/master/projects/scully-plugin-lazydisplay",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
