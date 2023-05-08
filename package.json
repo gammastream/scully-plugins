@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^10.2.3",
     "@angular/platform-browser-dynamic": "^10.2.3",
     "@angular/router": "^10.2.3",
-    "@scullyio/init": "^1.0.1",
+    "@scullyio/init": "^2.1.41",
     "@scullyio/ng-lib": "0.0.27",
     "@scullyio/scully": "^1.0.6",
     "rxjs": "^6.6.3",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1000.8",
     "@angular-devkit/build-ng-packagr": "^0.1000.8",
-    "@angular/cli": "^10.2.0",
+    "@angular/cli": "^16.0.0",
     "@angular/compiler-cli": "^10.2.3",
     "@angular/language-service": "^10.2.3",
     "@types/dotenv": "^8.2.0",
